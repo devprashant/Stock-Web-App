@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to our stock
+
+  // Wrapper
+  #wrapper
+
+      // STOCK INFO
+      #stockInfo
+          h2 Stock Info
+          p
+              strong Item Name:
+                  <span id='stockInfoName'></span>
+              br
+              strong Modified On:
+                  <span id='stockInfoModifiedOn'></span>
+              br
+              strong Modified By:
+                  <span id='stockInfoModifiedBy'></span>
+              br
+              strong Created On:
+                  <span id='stockInfoCreatedOn'></span>
+      // /STOCK INFO
+
+      // STOCK LIST
+      h2 Stock List
+      #stockList
+          table
+              thead
+                  th Item Name
+                  th Quantity
+                  th Price
+                  th Created On
+                  th Created By
+                  th Modified On
+                  th Modified By
+                  th Delete?
+                  th Update!
+              tbody
+      // /STOCK LIST
+      // ADD STOCK
+      #addStock
+          fieldset
+              input#inputItemName(type='text', placeholder="Item Name")
+              input#inputQuantity(type="text", placeholder="Quantity")
+              br
+              input#inputPrice(type="text", placeholder="Price")
+              br
+              input#inputModifiedOn(type="text", placeholder="Modified On")
+              input#inputModifiedBy(type="text", placeholder="Modified By")
+              br
+              input#inputCreatedOn(type="text", placeholder="Created On")
+              input#inputCreatedBy(type="text", placeholder="Created By")
+              br
+              button#btnAddStock Add Stock
+      // /ADD STOCK
+
+  // /WRAPPER
