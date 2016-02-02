@@ -8,12 +8,20 @@ var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
 var dbName = "stock";
-var db = monk('localhost:27017/'+ dbName);
+var connection_string = "localhost:27017/"+ dbName;
 
 //take advantage of openshift env vars when available:
-if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  db = monk(process.env.OPENSHIFT_MONGODB_DB_URL + db_name);
+ // if OPENSHIFT env variables are present, use the available connection info:
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME;
 }
+
+var db = monk(connection_string);
+
 
 
 var routes = require('./routes/index');
