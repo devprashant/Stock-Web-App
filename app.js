@@ -7,7 +7,14 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/stock');
+var dbName = "stock";
+var db = monk('localhost:27017/'+ dbName);
+
+//take advantage of openshift env vars when available:
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+  db = monk(process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+}
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
