@@ -12,7 +12,7 @@ var db = monk('localhost:27017/'+ dbName);
 
 //take advantage of openshift env vars when available:
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  db = monk(process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+  db = monk(process.env.OPENSHIFT_MONGODB_DB_URL + db_name);
 }
 
 
